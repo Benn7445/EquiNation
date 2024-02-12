@@ -1,0 +1,28 @@
+stats:
+  speed:
+    potential:
+      min: 20
+      max: 23
+    starting:
+      min: 10
+      max: 15
+  jump:
+    potential:
+      min: 10
+      max: 13
+    starting:
+      min: 5
+      max: 7.5
+
+duration:
+  shoeing: 60480
+  feeding: 1440
+  watering: 1440
+
+messages:
+  no-permissions: "&cYou do not have permissions."
+  only-players: "&cOnly players can execute this command."
+  not-attached: "&cYou have to ride a horse."
+  no-owner: "&cThis horse belongs to nobody."
+  spawned: "&aHorse has been spawned."
+  changed-breed: "&aYour horse is now %breed%."
