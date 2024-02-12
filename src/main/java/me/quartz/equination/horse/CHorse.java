@@ -8,11 +8,13 @@ public class CHorse {
 
     // General
     private final UUID entity;
+    private final int id;
     private String name;
     private final List<UUID> owners;
     private final List<UUID> trusts;
     private final CGender gender;
     private String breed;
+    private int age;
 
     // Stats
     private int ran;
@@ -29,6 +31,7 @@ public class CHorse {
 
     public CHorse(UUID entity) {
         this.entity = entity;
+        this.id = new Random().nextInt(900000);
         this.name = "Unnamed";
         this.owners = new ArrayList<>();
         this.trusts = new ArrayList<>();
@@ -45,6 +48,10 @@ public class CHorse {
 
     public UUID getEntity() {
         return entity;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
