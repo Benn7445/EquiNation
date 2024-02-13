@@ -23,7 +23,7 @@ public class HSpawnCommand implements CommandExecutor {
                 EquiNation.getInstance().getHorseManager().attachHorse(horse);
                 horse.setJumpStrength(EquiNation.getInstance().getHorseManager().getStartingJump());
                 AttributeInstance ai = horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-                if(ai != null) ai.setBaseValue(EquiNation.getInstance().getHorseManager().getPotentialSpeed());
+                if(ai != null) ai.setBaseValue(EquiNation.getInstance().getHorseManager().getStartingSpeed());
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.spawned"))));
             } else commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',

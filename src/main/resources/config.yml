@@ -1,11 +1,11 @@
 stats:
   speed:
     potential:
-      min: 20
-      max: 23
-    starting:
-      min: 10
+      min: 12
       max: 15
+    starting:
+      min: 6
+      max: 10
   jump:
     potential:
       min: 10
@@ -26,3 +26,4 @@ messages:
   no-owner: "&cThis horse belongs to nobody."
   spawned: "&aHorse has been spawned."
   changed-breed: "&aYour horse is now %breed%."
+  tamed: "&aYou tamed the horse."

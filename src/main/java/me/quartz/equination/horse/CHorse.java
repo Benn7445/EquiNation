@@ -14,7 +14,6 @@ public class CHorse {
     private final List<UUID> trusts;
     private final CGender gender;
     private String breed;
-    private int age;
 
     // Stats
     private int ran;
@@ -46,6 +45,23 @@ public class CHorse {
         this.watered = new Date();
     }
 
+    public CHorse(UUID entity, int id, String name, List<UUID> owners, List<UUID> trusts, CGender gender, String breed, int ran, int jumped, double potentialSpeed, double potentialJump, Date shod, Date fed, Date watered) {
+        this.entity = entity;
+        this.id = id;
+        this.name = name;
+        this.owners = owners;
+        this.trusts = trusts;
+        this.gender = gender;
+        this.breed = breed;
+        this.ran = ran;
+        this.jumped = jumped;
+        this.potentialSpeed = potentialSpeed;
+        this.potentialJump = potentialJump;
+        this.shod = shod;
+        this.fed = fed;
+        this.watered = watered;
+    }
+
     public UUID getEntity() {
         return entity;
     }
@@ -60,18 +76,21 @@ public class CHorse {
 
     public void rename(String name) {
         this.name = name;
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
-    public List<UUID> getOwner() {
+    public List<UUID> getOwners() {
         return owners;
     }
 
     public void addOwner(UUID uuid) {
         owners.add(uuid);
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public void removeOwner(UUID uuid) {
         owners.remove(uuid);
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public List<UUID> getTrusts() {
@@ -80,10 +99,12 @@ public class CHorse {
 
     public void addTrust(UUID uuid) {
         trusts.add(uuid);
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public void removeTrust(UUID uuid) {
         trusts.remove(uuid);
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public CGender getGender() {
@@ -96,6 +117,7 @@ public class CHorse {
 
     public void setBreed(String breed) {
         this.breed = breed;
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public int getRan() {
@@ -104,6 +126,7 @@ public class CHorse {
 
     public void addRan() {
         this.ran++;
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public int getJumped() {
@@ -112,6 +135,7 @@ public class CHorse {
 
     public void addJump() {
         this.jumped++;
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public double getPotentialSpeed() {
@@ -126,23 +150,38 @@ public class CHorse {
         return (new Date().getTime() - shod.getTime()) < (EquiNation.getInstance().getConfig().getInt("duration.shoeing") * 60000L);
     }
 
+    public Date getShod() {
+        return shod;
+    }
+
     public void shoe() {
         this.shod = new Date();
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public boolean isFed() {
         return (new Date().getTime() - fed.getTime()) < (EquiNation.getInstance().getConfig().getInt("duration.feeding") * 60000L);
     }
 
+    public Date getFed() {
+        return fed;
+    }
+
     public void feed() {
         this.fed = new Date();
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 
     public boolean isWatered() {
         return (new Date().getTime() - watered.getTime()) < (EquiNation.getInstance().getConfig().getInt("duration.watering") * 60000L);
     }
 
+    public Date getWatered() {
+        return watered;
+    }
+
     public void water() {
         this.watered = new Date();
+        EquiNation.getInstance().getHorseManager().serialize(this);
     }
 }
