@@ -14,16 +14,74 @@ stats:
       min: 5
       max: 7.5
 
+# Duration is in minutes
 duration:
   shoeing: 60480
   feeding: 1440
   watering: 1440
+  cure: 43200
+
+sickness-injuries:
+  sick1:
+    name: "Test Sickness"
+    effect: "SLOW"
+    curing: "POTION"
+    curing-effect: "SPEED"
+    # overriding, hunger, thirst, shoeing
+    when: "overriding"
+    # Percent wise
+    chance: 33
+  sick2:
+    name: "Test Sickness"
+    effect: "SLOW"
+    curing: "APPLE"
+    # overriding, hunger, thirst, shoeing
+    when: "overriding"
+    # Percent wise
+    chance: 33
+
+foods:
+  APPLE:
+    effect: "SPEED"
+    amplifier: 2
+    duration: 300
+
+items:
+  shoe:
+    name: "Horse shoe"
+    item: "STICK"
+    custom_data: 1
+    action: "shoe"
+  thermometer:
+    name: "Thermometer"
+    item: "IRON_INGOT"
+    custom_data: 1
+    action: "measure"
+  brush:
+    name: "Soft Brush"
+    item: "CLAY_BALL"
+    custom_data: 1
+    action: "brush"
+  vaccination:
+    name: "Vaccination"
+    item: "GLASS_BOTTLE"
+    custom_data: 1
+    action: "cure"
 
 messages:
   no-permissions: "&cYou do not have permissions."
   only-players: "&cOnly players can execute this command."
   not-attached: "&cYou have to ride a horse."
   no-owner: "&cThis horse belongs to nobody."
+  not-owner: "&cThis is not your horse."
   spawned: "&aHorse has been spawned."
   changed-breed: "&aYour horse is now %breed%."
+  changed-age: "&aYour horse is now %age% years old."
+  changed-height: "&aYour horse is now %age%hh."
+  changed-id: "&aYour horse is now id: %id%."
+  changed-health: "&aYour horse is now %health%hp."
   tamed: "&aYou tamed the horse."
+  added-owner: "&aAdded %player% as an owner of your horse."
+  removed-owner: "&aRemoved %player% as an owner of your horse."
+  added-trust: "&aAdded %player% as a trust of your horse."
+  removed-trust: "&aRemoved %player% as a trust of your horse."

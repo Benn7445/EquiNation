@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class HBreedCommand implements CommandExecutor {
+public class HHeightCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(commandSender.hasPermission("equination.hbreed")) {
+        if(commandSender.hasPermission("equination.hheight")) {
             if(commandSender instanceof Player) {
                 Player player = (Player) commandSender;
                 Entity entity = player.getVehicle();
@@ -23,13 +23,13 @@ public class HBreedCommand implements CommandExecutor {
                     if(strings.length > 0) {
                         CHorse cHorse = EquiNation.getInstance().getHorseManager().getHorse(entity);
                         if(cHorse != null) {
-                            cHorse.setBreed(strings[0]);
+                            cHorse.setHeight(Double.parseDouble(strings[0].replace("hh", "")));
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                                    Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.changed-breed"))
-                                            .replace("%breed%", strings[0])));
+                                    Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.changed-height"))
+                                            .replace("%height%", strings[0])));
                         } else player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                                 Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.no-owner"))));
-                    } else player.sendMessage(ChatColor.RED + "Usage: /hbreed <breed>");
+                    } else player.sendMessage(ChatColor.RED + "Usage: /hheight <height>");
                 } else commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.not-attached"))));
             } else commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',

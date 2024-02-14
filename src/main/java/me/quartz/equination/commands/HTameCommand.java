@@ -12,24 +12,22 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class HBreedCommand implements CommandExecutor {
+public class HTameCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(commandSender.hasPermission("equination.hbreed")) {
-            if(commandSender instanceof Player) {
+        if (commandSender.hasPermission("equination.htame")) {
+            if (commandSender instanceof Player) {
                 Player player = (Player) commandSender;
                 Entity entity = player.getVehicle();
-                if(entity instanceof Horse) {
-                    if(strings.length > 0) {
-                        CHorse cHorse = EquiNation.getInstance().getHorseManager().getHorse(entity);
-                        if(cHorse != null) {
-                            cHorse.setBreed(strings[0]);
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                                    Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.changed-breed"))
-                                            .replace("%breed%", strings[0])));
-                        } else player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                                Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.no-owner"))));
-                    } else player.sendMessage(ChatColor.RED + "Usage: /hbreed <breed>");
+                if (entity instanceof Horse) {
+                    CHorse cHorse = EquiNation.getInstance().getHorseManager().getHorse(entity);
+                    if (cHorse != null) {
+                        cHorse.addOwner(player.getUniqueId());
+                        ((Horse) entity).setTamed(true);
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                                Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.tamed"))));
+                    } else player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.no-owner"))));
                 } else commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(EquiNation.getInstance().getConfig().getString("messages.not-attached"))));
             } else commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',

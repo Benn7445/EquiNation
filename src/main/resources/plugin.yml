@@ -3,6 +3,14 @@ version: '${project.version}'
 main: me.quartz.equination.EquiNation
 api-version: '1.20'
 commands:
-  hspawn:
+  addowner:
+  addtrust:
+  delowner:
+  deltrust:
+  hage:
   hbreed:
-  tame:
+  hhealth:
+  hheight:
+  hid:
+  hspawn:
+  htame:
